@@ -8,7 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		0382E0228961A8AA4C4802C2 /* Pods_Boom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B5D57D3E8849298264F8C60 /* Pods_Boom.framework */; };
-		D12D68F625D29D77003D91D8 /* gameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12D68F525D29D77003D91D8 /* gameViewController.swift */; };
+		D119643A25D669BA00CF983A /* CalculateItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D119643925D669BA00CF983A /* CalculateItem.swift */; };
+		D119643E25D68A1300CF983A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D119643D25D68A1300CF983A /* GoogleService-Info.plist */; };
+		D124E28925D513EB00601643 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D124E28825D513EB00601643 /* PageViewController.swift */; };
+		D12D68F625D29D77003D91D8 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12D68F525D29D77003D91D8 /* GameViewController.swift */; };
 		D12D68F925D29D8A003D91D8 /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12D68F825D29D8A003D91D8 /* InformationViewController.swift */; };
 		D12D68FD25D2A0AD003D91D8 /* CalculateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12D68FC25D2A0AD003D91D8 /* CalculateViewController.swift */; };
 		D178B81C25D266DA00EF6857 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D178B81B25D266DA00EF6857 /* AppDelegate.swift */; };
@@ -23,7 +26,10 @@
 		04476E99A1BEDFBE85765D5F /* Pods-Boom.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Boom.release.xcconfig"; path = "Target Support Files/Pods-Boom/Pods-Boom.release.xcconfig"; sourceTree = "<group>"; };
 		2B5D57D3E8849298264F8C60 /* Pods_Boom.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Boom.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FB2A0C5D8325C898DE6AF9A /* Pods-Boom.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Boom.debug.xcconfig"; path = "Target Support Files/Pods-Boom/Pods-Boom.debug.xcconfig"; sourceTree = "<group>"; };
-		D12D68F525D29D77003D91D8 /* gameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gameViewController.swift; sourceTree = "<group>"; };
+		D119643925D669BA00CF983A /* CalculateItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateItem.swift; sourceTree = "<group>"; };
+		D119643D25D68A1300CF983A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D124E28825D513EB00601643 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
+		D12D68F525D29D77003D91D8 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		D12D68F825D29D8A003D91D8 /* InformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationViewController.swift; sourceTree = "<group>"; };
 		D12D68FC25D2A0AD003D91D8 /* CalculateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateViewController.swift; sourceTree = "<group>"; };
 		D178B81825D266DA00EF6857 /* Boom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Boom.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -56,6 +62,31 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D119643625D6694700CF983A /* CalView */ = {
+			isa = PBXGroup;
+			children = (
+				D12D68FC25D2A0AD003D91D8 /* CalculateViewController.swift */,
+				D119643925D669BA00CF983A /* CalculateItem.swift */,
+			);
+			path = CalView;
+			sourceTree = "<group>";
+		};
+		D119643725D6696800CF983A /* InformView */ = {
+			isa = PBXGroup;
+			children = (
+				D12D68F825D29D8A003D91D8 /* InformationViewController.swift */,
+			);
+			path = InformView;
+			sourceTree = "<group>";
+		};
+		D119643825D6696E00CF983A /* GameView */ = {
+			isa = PBXGroup;
+			children = (
+				D12D68F525D29D77003D91D8 /* GameViewController.swift */,
+			);
+			path = GameView;
+			sourceTree = "<group>";
+		};
 		D178B80F25D266DA00EF6857 = {
 			isa = PBXGroup;
 			children = (
@@ -77,16 +108,18 @@
 		D178B81A25D266DA00EF6857 /* Boom */ = {
 			isa = PBXGroup;
 			children = (
+				D119643825D6696E00CF983A /* GameView */,
+				D119643725D6696800CF983A /* InformView */,
+				D119643625D6694700CF983A /* CalView */,
 				D178B81B25D266DA00EF6857 /* AppDelegate.swift */,
 				D178B81D25D266DA00EF6857 /* SceneDelegate.swift */,
 				D178B81F25D266DA00EF6857 /* ViewController.swift */,
 				D178B82125D266DA00EF6857 /* Main.storyboard */,
-				D12D68F525D29D77003D91D8 /* gameViewController.swift */,
-				D12D68F825D29D8A003D91D8 /* InformationViewController.swift */,
+				D124E28825D513EB00601643 /* PageViewController.swift */,
 				D178B82425D266DB00EF6857 /* Assets.xcassets */,
 				D178B82625D266DB00EF6857 /* LaunchScreen.storyboard */,
+				D119643D25D68A1300CF983A /* GoogleService-Info.plist */,
 				D178B82925D266DB00EF6857 /* Info.plist */,
-				D12D68FC25D2A0AD003D91D8 /* CalculateViewController.swift */,
 			);
 			path = Boom;
 			sourceTree = "<group>";
@@ -160,6 +193,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D178B82825D266DB00EF6857 /* LaunchScreen.storyboard in Resources */,
+				D119643E25D68A1300CF983A /* GoogleService-Info.plist in Resources */,
 				D178B82525D266DB00EF6857 /* Assets.xcassets in Resources */,
 				D178B82325D266DA00EF6857 /* Main.storyboard in Resources */,
 			);
@@ -215,11 +249,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				D12D68FD25D2A0AD003D91D8 /* CalculateViewController.swift in Sources */,
+				D124E28925D513EB00601643 /* PageViewController.swift in Sources */,
 				D178B82025D266DA00EF6857 /* ViewController.swift in Sources */,
 				D178B81C25D266DA00EF6857 /* AppDelegate.swift in Sources */,
 				D178B81E25D266DA00EF6857 /* SceneDelegate.swift in Sources */,
-				D12D68F625D29D77003D91D8 /* gameViewController.swift in Sources */,
+				D12D68F625D29D77003D91D8 /* GameViewController.swift in Sources */,
 				D12D68F925D29D8A003D91D8 /* InformationViewController.swift in Sources */,
+				D119643A25D669BA00CF983A /* CalculateItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

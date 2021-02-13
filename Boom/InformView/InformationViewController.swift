@@ -9,9 +9,12 @@ import UIKit
 
 class InformationViewController: UIViewController {
 
+    var y: CGFloat = 0
+    var height: CGFloat = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
     
 }
