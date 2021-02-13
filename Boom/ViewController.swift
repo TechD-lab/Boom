@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
     
@@ -13,13 +14,17 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     @IBOutlet weak var containerView: UIView!
     
     var menus: [String] = []
-
+    var uid: String?
+    var calItems: [CalculateItem] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         menus.append("Main")
         menus.append("Games")
         menus.append("More")
+        
+        uid = Auth.auth().currentUser?.uid
         
     }
     
@@ -86,6 +91,55 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             touched(indexPath: [0,0])
             unTouched(indexPath: [0,1])
             unTouched(indexPath: [0,2])
+        }
+    }
+    @IBAction func plus_clicked(_ sender: Any) {
+        createCalItem()
+    }
+    
+    @IBAction func search_clicked(_ sender: Any) {
+        print(Database.database().reference().child("Users").child(uid!).child("CalItems"))
+    }
+    
+    func createCalItem() {
+        
+        let calitem = CalculateItem()
+        var people1 = people()
+        people1.name = "zzoozzoon"
+        people1.uid = 1
+        var people2 = people()
+        people2.name = "Goblin"
+        people2.uid = 2
+        calitem.name = "1차"
+        calitem.peoples = [people1, people2]
+        calitem.uid = 1
+        calitem.totalCost = 75000
+        
+        var peopleInfo: Dictionary<String, Any> = [:]
+        for human in calitem.peoples! {
+            peopleInfo.updateValue(human.uid!, forKey: human.name!)
+        }
+        
+        
+        
+        let calItemInfo: Dictionary<String, Any> = [
+            "name" : calitem.name!,
+            "peoples": peopleInfo,
+            "totalCost": calitem.totalCost!
+        ]
+        Database.database().reference().child("Users").child(uid!).child("CalItems").child(String(calitem.uid!)).setValue(calItemInfo)
+    }
+    
+    @IBAction func change_clicked(_ sender: Any) {
+        
+        Database.database().reference().child("Users").observe(DataEventType.value) { (DataSnapshot) in
+            let myUid = Auth.auth().currentUser?.uid
+            
+            for child in DataSnapshot.children {
+                let fchild = child as! DataSnapshot
+                
+                print(fchild.value(forKey: "CalItems"))
+            }
         }
     }
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="HC8-nq-h8N">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jLi-YC-9gB">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -18,10 +18,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XNd-OH-ghE">
-                                <rect key="frame" x="16" y="152" width="382" height="610"/>
+                                <rect key="frame" x="16" y="152" width="382" height="660"/>
                                 <color key="backgroundColor" red="0.83137254901960778" green="0.63529411764705879" blue="0.46274509803921571" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="610" id="uqx-Jd-c2z"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="660" id="CiZ-xN-Eeh"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="KLb-mz-bLy"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="SP2-lm-bpS"/>
@@ -100,7 +100,7 @@
                             <constraint firstItem="XNd-OH-ghE" firstAttribute="top" secondItem="gGT-Lb-pqU" secondAttribute="bottom" constant="20" id="44t-cg-FB7"/>
                             <constraint firstItem="k5J-6h-IHN" firstAttribute="trailing" secondItem="XNd-OH-ghE" secondAttribute="trailing" constant="16" id="4WM-i6-xFM"/>
                             <constraint firstItem="gGT-Lb-pqU" firstAttribute="centerX" secondItem="k5J-6h-IHN" secondAttribute="centerX" id="Euk-Ox-Afa"/>
-                            <constraint firstItem="k5J-6h-IHN" firstAttribute="bottom" secondItem="XNd-OH-ghE" secondAttribute="bottom" constant="100" id="F5r-u1-qCb"/>
+                            <constraint firstItem="k5J-6h-IHN" firstAttribute="bottom" secondItem="XNd-OH-ghE" secondAttribute="bottom" constant="50" id="F5r-u1-qCb"/>
                             <constraint firstItem="dPt-Po-CrE" firstAttribute="top" secondItem="k5J-6h-IHN" secondAttribute="top" constant="12" id="NDb-up-m7W"/>
                             <constraint firstItem="XNd-OH-ghE" firstAttribute="centerX" secondItem="k5J-6h-IHN" secondAttribute="centerX" id="sEX-p4-vWY"/>
                             <constraint firstItem="dPt-Po-CrE" firstAttribute="centerX" secondItem="k5J-6h-IHN" secondAttribute="centerX" id="uyh-eO-XB4"/>
@@ -130,10 +130,69 @@
             </objects>
             <point key="canvasLocation" x="1848" y="-36"/>
         </scene>
+        <!--Start View Controller-->
+        <scene sceneID="4i6-ig-MXf">
+            <objects>
+                <viewController id="jLi-YC-9gB" customClass="StartViewController" customModule="Boom" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4wa-VR-Fb2">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w9h-2w-11r">
+                                <rect key="frame" x="79" y="377" width="256" height="152"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="256" id="0oy-GP-SEp"/>
+                                    <constraint firstAttribute="height" constant="152" id="Efc-NZ-QZB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pBP-Yf-eNF">
+                                <rect key="frame" x="150" y="609" width="114" height="104"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="114" id="B6c-Vy-9uJ"/>
+                                    <constraint firstAttribute="height" constant="104" id="a1N-kN-JS8"/>
+                                </constraints>
+                                <state key="normal" title="가입"/>
+                                <connections>
+                                    <action selector="btn_clicked:" destination="jLi-YC-9gB" eventType="touchUpInside" id="BVM-CX-gbx"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lRh-g3-JPr">
+                                <rect key="frame" x="159" y="721" width="96" height="82"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="96" id="FgY-hn-9aF"/>
+                                    <constraint firstAttribute="height" constant="82" id="ILl-ai-Aoi"/>
+                                </constraints>
+                                <state key="normal" title="로그인"/>
+                                <connections>
+                                    <action selector="login_btn:" destination="jLi-YC-9gB" eventType="touchUpInside" id="ZBH-rb-Bth"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Nwr-Ek-Ze6"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Nwr-Ek-Ze6" firstAttribute="bottom" secondItem="lRh-g3-JPr" secondAttribute="bottom" constant="59" id="AEO-cQ-fUg"/>
+                            <constraint firstItem="lRh-g3-JPr" firstAttribute="centerX" secondItem="Nwr-Ek-Ze6" secondAttribute="centerX" id="DfE-MJ-MqS"/>
+                            <constraint firstItem="Nwr-Ek-Ze6" firstAttribute="bottom" secondItem="pBP-Yf-eNF" secondAttribute="bottom" constant="149" id="Tno-UP-eS7"/>
+                            <constraint firstItem="w9h-2w-11r" firstAttribute="centerX" secondItem="Nwr-Ek-Ze6" secondAttribute="centerX" id="jv9-4o-H2d"/>
+                            <constraint firstItem="w9h-2w-11r" firstAttribute="centerY" secondItem="Nwr-Ek-Ze6" secondAttribute="centerY" id="tS6-sh-Dxz"/>
+                            <constraint firstItem="pBP-Yf-eNF" firstAttribute="centerX" secondItem="Nwr-Ek-Ze6" secondAttribute="centerX" id="tnb-3Q-vYk"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="input_text" destination="w9h-2w-11r" id="ldL-Sp-QUI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nbH-g5-38e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1656.521739130435" y="-967.63392857142856"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="rqk-z9-dqn">
             <objects>
-                <viewController id="HC8-nq-h8N" customClass="ViewController" customModule="Boom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" id="HC8-nq-h8N" customClass="ViewController" customModule="Boom" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="98F-Ct-xUc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -203,6 +262,9 @@
                                 <state key="normal" image="gearshape" catalog="system">
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="24"/>
                                 </state>
+                                <connections>
+                                    <action selector="change_clicked:" destination="HC8-nq-h8N" eventType="touchUpInside" id="cg7-d9-qdy"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eFM-iZ-gka" userLabel="plus">
                                 <rect key="frame" x="364" y="59" width="30" height="30"/>
@@ -214,6 +276,9 @@
                                 <state key="normal" image="plus" catalog="system">
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="24"/>
                                 </state>
+                                <connections>
+                                    <action selector="plus_clicked:" destination="HC8-nq-h8N" eventType="touchUpInside" id="POE-PQ-MG5"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BOOM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I00-uK-oyj">
                                 <rect key="frame" x="180.5" y="62" width="53" height="21"/>
@@ -235,6 +300,9 @@
                                 <state key="normal" image="magnifyingglass" catalog="system">
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="24"/>
                                 </state>
+                                <connections>
+                                    <action selector="search_clicked:" destination="HC8-nq-h8N" eventType="touchUpInside" id="6w3-E4-Wf9"/>
+                                </connections>
                             </button>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0wl-8T-hdi">
                                 <rect key="frame" x="0.0" y="175" width="414" height="687"/>

@@ -11,6 +11,7 @@
 		D119643A25D669BA00CF983A /* CalculateItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D119643925D669BA00CF983A /* CalculateItem.swift */; };
 		D119643E25D68A1300CF983A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D119643D25D68A1300CF983A /* GoogleService-Info.plist */; };
 		D124E28925D513EB00601643 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D124E28825D513EB00601643 /* PageViewController.swift */; };
+		D12AED4E25D7C21B0082FB57 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12AED4D25D7C21B0082FB57 /* StartViewController.swift */; };
 		D12D68F625D29D77003D91D8 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12D68F525D29D77003D91D8 /* GameViewController.swift */; };
 		D12D68F925D29D8A003D91D8 /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12D68F825D29D8A003D91D8 /* InformationViewController.swift */; };
 		D12D68FD25D2A0AD003D91D8 /* CalculateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12D68FC25D2A0AD003D91D8 /* CalculateViewController.swift */; };
@@ -29,6 +30,7 @@
 		D119643925D669BA00CF983A /* CalculateItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateItem.swift; sourceTree = "<group>"; };
 		D119643D25D68A1300CF983A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D124E28825D513EB00601643 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
+		D12AED4D25D7C21B0082FB57 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		D12D68F525D29D77003D91D8 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		D12D68F825D29D8A003D91D8 /* InformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationViewController.swift; sourceTree = "<group>"; };
 		D12D68FC25D2A0AD003D91D8 /* CalculateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateViewController.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 				D178B81D25D266DA00EF6857 /* SceneDelegate.swift */,
 				D178B81F25D266DA00EF6857 /* ViewController.swift */,
 				D178B82125D266DA00EF6857 /* Main.storyboard */,
+				D12AED4D25D7C21B0082FB57 /* StartViewController.swift */,
 				D124E28825D513EB00601643 /* PageViewController.swift */,
 				D178B82425D266DB00EF6857 /* Assets.xcassets */,
 				D178B82625D266DB00EF6857 /* LaunchScreen.storyboard */,
@@ -253,6 +256,7 @@
 				D178B82025D266DA00EF6857 /* ViewController.swift in Sources */,
 				D178B81C25D266DA00EF6857 /* AppDelegate.swift in Sources */,
 				D178B81E25D266DA00EF6857 /* SceneDelegate.swift in Sources */,
+				D12AED4E25D7C21B0082FB57 /* StartViewController.swift in Sources */,
 				D12D68F625D29D77003D91D8 /* GameViewController.swift in Sources */,
 				D12D68F925D29D8A003D91D8 /* InformationViewController.swift in Sources */,
 				D119643A25D669BA00CF983A /* CalculateItem.swift in Sources */,
