@@ -49,11 +49,29 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EWm-5W-aBg">
+                                                    <rect key="frame" x="39" y="11" width="40" height="20"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="67e-Pt-wPn">
+                                                    <rect key="frame" x="97" y="31" width="55" height="28"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" red="0.83137254901960778" green="0.63529411764705879" blue="0.46274509803921571" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstItem="fgv-3R-EXs" firstAttribute="top" secondItem="Nim-8J-CIa" secondAttribute="top" id="Abw-FX-Ocq"/>
+                                                <constraint firstItem="67e-Pt-wPn" firstAttribute="centerY" secondItem="Nim-8J-CIa" secondAttribute="centerY" id="EzS-56-USS"/>
+                                                <constraint firstItem="EWm-5W-aBg" firstAttribute="leading" secondItem="Nim-8J-CIa" secondAttribute="leading" constant="39" id="Kd9-X0-fQf"/>
+                                                <constraint firstItem="EWm-5W-aBg" firstAttribute="top" secondItem="Nim-8J-CIa" secondAttribute="top" constant="11" id="PFR-GX-yax"/>
                                                 <constraint firstItem="fgv-3R-EXs" firstAttribute="centerX" secondItem="Nim-8J-CIa" secondAttribute="centerX" id="SkQ-O4-krh"/>
+                                                <constraint firstItem="67e-Pt-wPn" firstAttribute="leading" secondItem="Nim-8J-CIa" secondAttribute="leading" constant="97" id="U9V-ZV-6Y6"/>
+                                                <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="EWm-5W-aBg" secondAttribute="trailing" constant="303" id="n1r-Zy-lwH"/>
+                                                <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="67e-Pt-wPn" secondAttribute="trailing" constant="230" id="p8b-PI-WSu"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.83137254901960778" green="0.63529411764705879" blue="0.46274509803921571" alpha="1" colorSpace="calibratedRGB"/>
@@ -66,6 +84,8 @@
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
                                             <outlet property="button_cell" destination="fgv-3R-EXs" id="he7-wu-C5m"/>
+                                            <outlet property="cell_main" destination="EWm-5W-aBg" id="CWP-Yl-19P"/>
+                                            <outlet property="cell_money" destination="67e-Pt-wPn" id="FIi-Ll-57L"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

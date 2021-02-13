@@ -33,10 +33,8 @@ class StartViewController: UIViewController {
     
     func createUser() {
         let value: Dictionary<String, Any> = [
-            "name": input_text.text
+            "name": input_text.text!
         ]
-            
-        
         Database.database().reference().child("Users").childByAutoId().setValue(value)
     }
 

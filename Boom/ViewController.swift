@@ -15,7 +15,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     var menus: [String] = []
     var uid: String?
-    var calItems: [CalculateItem] = []
+    let ref = Database.database().reference()
+    var stage: Int = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +26,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         menus.append("More")
         
         uid = Auth.auth().currentUser?.uid
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -52,9 +52,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        
-        
         
         touched(indexPath: indexPath)
     }
@@ -98,49 +95,36 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     @IBAction func search_clicked(_ sender: Any) {
-        print(Database.database().reference().child("Users").child(uid!).child("CalItems"))
+        print(ref.child("Users").child(uid!).child("CalItems"))
     }
     
     func createCalItem() {
         
+        //calItem 을 만들어서 데이터 집어넣고 DB에 푸쉬
+        
         let calitem = CalculateItem()
-        var people1 = people()
-        people1.name = "zzoozzoon"
-        people1.uid = 1
-        var people2 = people()
-        people2.name = "Goblin"
-        people2.uid = 2
-        calitem.name = "1차"
-        calitem.peoples = [people1, people2]
-        calitem.uid = 1
-        calitem.totalCost = 75000
-        
-        var peopleInfo: Dictionary<String, Any> = [:]
-        for human in calitem.peoples! {
-            peopleInfo.updateValue(human.uid!, forKey: human.name!)
-        }
-        
-        
-        
+        calitem.name = "\(stage)차"
+        calitem.totalCost = 0
+
         let calItemInfo: Dictionary<String, Any> = [
             "name" : calitem.name!,
-            "peoples": peopleInfo,
-            "totalCost": calitem.totalCost!
+            "totalCost" : calitem.totalCost!
         ]
-        Database.database().reference().child("Users").child(uid!).child("CalItems").child(String(calitem.uid!)).setValue(calItemInfo)
+        ref.child("Users").child(uid!).child("CalItems").childByAutoId().setValue(calItemInfo)
+        stage += 1
     }
     
     @IBAction func change_clicked(_ sender: Any) {
         
-        Database.database().reference().child("Users").observe(DataEventType.value) { (DataSnapshot) in
-            let myUid = Auth.auth().currentUser?.uid
+//        ref.child("Users").child(uid!).observe(DataEventType.value) { (DataSnapshot) in
+//            let myUid = Auth.auth().currentUser?.uid
             
-            for child in DataSnapshot.children {
-                let fchild = child as! DataSnapshot
-                
-                print(fchild.value(forKey: "CalItems"))
-            }
-        }
+//            for item in DataSnapshot.children {
+//                let values = DataSnapshot.value
+//                let dic = values as! [String: Any]
+//                print(dic["CalItems"])
+//            }
+//        }
     }
 }
 

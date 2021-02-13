@@ -8,10 +8,10 @@
 import UIKit
 
 class CalculateItem {
-    var uid: Int?  //정보 코드
     var name: String?   //어디서 술먹었나?
     var peoples: [people]?   //누가 참가했나?
     var totalCost: Int?  //총 얼마?
+    var uid: String? // uid
 }
 
 struct people {
