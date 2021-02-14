@@ -16,7 +16,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     var menus: [String] = []
     var uid: String?
     let ref = Database.database().reference()
-    var stage: Int = 1
+    var calVC: UIViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -101,17 +101,29 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     func createCalItem() {
         
         //calItem 을 만들어서 데이터 집어넣고 DB에 푸쉬
-        
+        //calItem 모델 만들기
         let calitem = CalculateItem()
-        calitem.name = "\(stage)차"
+        calitem.name = "장소 이름"
         calitem.totalCost = 0
 
         let calItemInfo: Dictionary<String, Any> = [
             "name" : calitem.name!,
-            "totalCost" : calitem.totalCost!
+            "totalCost" : calitem.totalCost!,
+            "uid" :         ref.child("Users").child(uid!).child("CalItems").childByAutoId().key!
         ]
-        ref.child("Users").child(uid!).child("CalItems").childByAutoId().setValue(calItemInfo)
-        stage += 1
+        
+        calitem.uid = calItemInfo["uid"] as? String
+        //Firebase DB에 집어넣기
+        ref.child("Users").child(uid!).child("CalItems").child(calItemInfo["uid"] as! String).setValue(calItemInfo)
+        
+        //calculateViewController 불러오기
+        let calViewController = calVC as! CalculateViewController
+        
+        //calViewController   calItems 에 추가
+        calViewController.calItems.append(calitem)
+        
+        //tableview 새로고침
+        calViewController.tableView.reloadData()
     }
     
     @IBAction func change_clicked(_ sender: Any) {
@@ -135,6 +147,9 @@ class MainCollectionViewCell: UICollectionViewCell {
         
 }
 
+// 최상위 뷰 컨트롤러 불러오기
+
+// UIApplication.topViewController()  로 startViewController 부를 수 있음 어디서든
 
 extension UIApplication {
     class func topViewController(base: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {

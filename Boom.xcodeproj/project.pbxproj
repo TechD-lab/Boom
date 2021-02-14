@@ -21,6 +21,7 @@
 		D178B82325D266DA00EF6857 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D178B82125D266DA00EF6857 /* Main.storyboard */; };
 		D178B82525D266DB00EF6857 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D178B82425D266DB00EF6857 /* Assets.xcassets */; };
 		D178B82825D266DB00EF6857 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D178B82625D266DB00EF6857 /* LaunchScreen.storyboard */; };
+		D1911C5925D90E2600E8B3E8 /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1911C5825D90E2600E8B3E8 /* ItemViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		D178B82425D266DB00EF6857 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D178B82725D266DB00EF6857 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D178B82925D266DB00EF6857 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D1911C5825D90E2600E8B3E8 /* ItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 			children = (
 				D12D68FC25D2A0AD003D91D8 /* CalculateViewController.swift */,
 				D119643925D669BA00CF983A /* CalculateItem.swift */,
+				D1911C5825D90E2600E8B3E8 /* ItemViewController.swift */,
 			);
 			path = CalView;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 				D178B81E25D266DA00EF6857 /* SceneDelegate.swift in Sources */,
 				D12AED4E25D7C21B0082FB57 /* StartViewController.swift in Sources */,
 				D12D68F625D29D77003D91D8 /* GameViewController.swift in Sources */,
+				D1911C5925D90E2600E8B3E8 /* ItemViewController.swift in Sources */,
 				D12D68F925D29D8A003D91D8 /* InformationViewController.swift in Sources */,
 				D119643A25D669BA00CF983A /* CalculateItem.swift in Sources */,
 			);

@@ -16,7 +16,6 @@ class CalculateViewController: UIViewController, UITableViewDelegate, UITableVie
     
     let ref = Database.database().reference()
     var uid: String?
-    var index: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +35,6 @@ class CalculateViewController: UIViewController, UITableViewDelegate, UITableVie
                 calItem.totalCost = final["totalCost"] as? Int
                 calItem.uid = item.key
                 self.calItems.append(calItem)
-                print(self.calItems.count)
             }
             self.tableView.reloadData()
         })
@@ -51,9 +49,31 @@ class CalculateViewController: UIViewController, UITableViewDelegate, UITableVie
         cell.button_cell.layer.cornerRadius = 8
 
         //calItems 에서 정보 받아오기
-        cell.cell_main.text = calItems[index].name
-        cell.cell_money.text = "\(String(describing: calItems[index].totalCost!))"
-        index += 1
+        cell.cell_main.text = calItems[indexPath.row].name
+        cell.cell_money.text = "\(String(describing: calItems[indexPath.row].totalCost!))"
+        
+        //cell 흰 버튼 클릭 이벤트
+        cell.mainButtonTapHandler = {
+            let VC = self.storyboard?.instantiateViewController(identifier: "ItemViewController") as! ItemViewController
+            VC.modalPresentationStyle = .fullScreen
+            
+            self.present(VC, animated: true, completion: nil)
+        }
+        
+        
+        
+        //cell 의 deleteButtonTapHandler
+        cell.deleteButtonTapHandler = {
+            // Firebase DB 에서 지우기
+            let itemUid = self.calItems[indexPath.row].uid
+            self.ref.child("Users").child(self.uid!)
+                .child("CalItems").child(itemUid!).removeValue()
+            
+            //calItems 에서 지우기
+            self.calItems.remove(at: indexPath.row)
+            self.tableView.reloadData()
+            
+        }
         
         return cell
     }
@@ -68,5 +88,16 @@ class CalculateViewCell: UITableViewCell {
     @IBOutlet weak var button_cell: UIButton!
     @IBOutlet weak var cell_main: UILabel!
     @IBOutlet weak var cell_money: UILabel!
+    @IBOutlet weak var delete_btn: UIButton!
+    var deleteButtonTapHandler: (() -> Void)?
+    var mainButtonTapHandler: (() -> Void)?
+    
+    @IBAction func delete_clicked(_ sender: Any) {
+        deleteButtonTapHandler?()
+    }
+    @IBAction func mainBtn_clicked(_ sender: Any) {
+        mainButtonTapHandler?()
+    }
+
     
 }

@@ -11,10 +11,11 @@ import Firebase
 class StartViewController: UIViewController {
 
     @IBOutlet weak var input_text: UITextField!
+    var VC: UIViewController?
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        VC = self.storyboard?.instantiateViewController(withIdentifier: "ViewController") as! ViewController
     }
     @IBAction func btn_clicked(_ sender: Any) {
         Auth.auth().createUser(withEmail: "tmtsale@naver.com", password: "dkssud110") { (user, err) in
@@ -25,7 +26,7 @@ class StartViewController: UIViewController {
     
     @IBAction func login_btn(_ sender: Any) {
         Auth.auth().signIn(withEmail: "tmtsale@naver.com", password: "dkssud110") { (user, err) in
-            let view = self.storyboard?.instantiateViewController(identifier: "ViewController") as! ViewController
+            let view = self.VC as! ViewController
             view.modalPresentationStyle = .fullScreen
             self.present(view, animated: true, completion: nil)
         }
