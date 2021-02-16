@@ -211,6 +211,9 @@
                                         <state key="normal" title="Done">
                                             <color key="titleColor" red="0.55294117647058827" green="0.43137254901960786" blue="0.94117647058823528" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="done_clicked:" destination="suX-b1-uZw" eventType="touchUpInside" id="up3-dx-kPZ"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.10000000000000001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qlg-MZ-VsA" userLabel="bar">
                                         <rect key="frame" x="0.0" y="43" width="414" height="1"/>
@@ -437,6 +440,7 @@
                         <outlet property="easy_stepper" destination="3SB-jw-fWI" id="lBU-LP-UXL"/>
                         <outlet property="mode_changer" destination="e5N-lS-Cu7" id="Wj0-5m-Trk"/>
                         <outlet property="money_text" destination="Y6l-vV-seP" id="nDm-56-mTh"/>
+                        <outlet property="name_text" destination="c6Y-4s-e1v" id="C9W-0Q-0Fm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GoZ-FS-pFo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

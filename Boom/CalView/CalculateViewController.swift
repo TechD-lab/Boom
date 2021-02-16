@@ -58,7 +58,11 @@ class CalculateViewController: UIViewController, UITableViewDelegate, UITableVie
             let VC = self.storyboard?.instantiateViewController(identifier: "ItemViewController") as! ItemViewController
             VC.modalPresentationStyle = .fullScreen
             VC.calUid = cellUid
-            
+            VC.updateTableView = {
+                self.calItems[indexPath.row].name = VC.name_text.text
+                self.calItems[indexPath.row].totalCost = Int(VC.money_text.text!)
+                self.tableView.reloadData()
+            }            
             self.present(VC, animated: true, completion: nil)
         }
         

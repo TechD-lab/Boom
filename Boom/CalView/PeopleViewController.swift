@@ -159,7 +159,7 @@ class PeopleViewController: UIViewController, UITableViewDataSource, UITableView
         
         var count: Int = 0
         
-        ref.child("Users").child(uid!).child("PeopleList").observe(DataEventType.value, with: { (DataSnapshot) in
+        ref.child("Users").child(uid!).child("PeopleList").observeSingleEvent(of: DataEventType.value, with: { (DataSnapshot) in
             for item in DataSnapshot.children.allObjects as! [DataSnapshot] {
                 let values = item.value as! [String: Any]
                 if values[self.calUid!] as! Int == 1 {
