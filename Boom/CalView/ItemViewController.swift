@@ -22,6 +22,8 @@ class ItemViewController: UIViewController {
     @IBOutlet weak var arrow_one: UIImageView!
     @IBOutlet weak var arrow_two: UIImageView!
     
+    var calUid: String?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +36,7 @@ class ItemViewController: UIViewController {
     @IBAction func cancel_clicked(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
+    
     @IBAction func switch_action(_ sender: UISwitch) {
         
         if sender.isOn == true {
@@ -41,13 +44,25 @@ class ItemViewController: UIViewController {
             easy_count_label.isHidden = false
             arrow_one.isHidden = true
             arrow_two.isHidden = true
+            button_people.isEnabled = false
+            button_charged.isEnabled = false
         } else {
             easy_stepper.isHidden = true
             easy_count_label.isHidden = true
             arrow_two.isHidden = false
             arrow_one.isHidden = false
+            button_people.isEnabled = true
+            button_charged.isEnabled = true
         }
     }
+    @IBAction func btn_people_clicked(_ sender: Any) {
+        let VC = self.storyboard?.instantiateViewController(identifier: "PeopleViewController") as! PeopleViewController
+        VC.modalPresentationStyle = .fullScreen
+        VC.calUid = calUid
+        self.present(VC, animated: true, completion: nil)
+    }
+    
+    
     
 
 }

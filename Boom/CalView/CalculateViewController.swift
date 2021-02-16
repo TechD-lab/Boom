@@ -52,10 +52,12 @@ class CalculateViewController: UIViewController, UITableViewDelegate, UITableVie
         cell.cell_main.text = calItems[indexPath.row].name
         cell.cell_money.text = "\(String(describing: calItems[indexPath.row].totalCost!))"
         
+        let cellUid = calItems[indexPath.row].uid
         //cell 흰 버튼 클릭 이벤트
         cell.mainButtonTapHandler = {
             let VC = self.storyboard?.instantiateViewController(identifier: "ItemViewController") as! ItemViewController
             VC.modalPresentationStyle = .fullScreen
+            VC.calUid = cellUid
             
             self.present(VC, animated: true, completion: nil)
         }

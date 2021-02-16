@@ -16,5 +16,10 @@ class CalculateItem {
 
 struct people {
     var name: String?
-    var uid: Int?
+    var uid: String?
+    
+    public mutating func setInfo (name: String, uid: String) {
+        self.name = name
+        self.uid = uid
+    }
 }
