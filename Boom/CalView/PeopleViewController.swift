@@ -36,7 +36,6 @@ class PeopleViewController: UIViewController, UITableViewDataSource, UITableView
                 var newPeople = people()
                 newPeople.name = values["name"] as? String
                 newPeople.uid = values["uid"] as? String
-                
                 if values[self.calUid!] == nil {
                     self.ref.child("Users").child(self.uid!).child("PeopleList").child(values["uid"] as! String).child(self.calUid!).setValue(false)
                     self.uncheckedPeopleList.append(newPeople)
@@ -46,16 +45,17 @@ class PeopleViewController: UIViewController, UITableViewDataSource, UITableView
                         self.uncheckedPeopleList.append(newPeople)
                     } else {
                         self.checkedPeopleList.append(newPeople)
+                        
                     }
                 }
             }
             self.tableView.reloadData()
         })
+        
+        
     }
     
     @IBAction func plus_clicked(_ sender: Any) {
-        
-        
         //Users - uid - people  안에 사람 목록 추가 Firebase Data
         let value: Dictionary<String, Any> = [
             "name": "이름",
@@ -63,7 +63,6 @@ class PeopleViewController: UIViewController, UITableViewDataSource, UITableView
             calUid!: false
         ]
         let peopleUid = value["uid"] as! String
-        
         
         //uncheckedPeopleList 에 추가 ( 기본 )
         
@@ -168,15 +167,12 @@ class PeopleViewController: UIViewController, UITableViewDataSource, UITableView
             }
             self.ref.child("Users").child(self.uid!).child("CalItems").child(self.calUid!).child("totalCount").setValue(count)
         })
-
-        
-        
-        
         
         self.dismiss(animated: true, completion: nil)
     }
     
 }
+
 
 class PeopleCell: UITableViewCell {
     @IBOutlet weak var cell_name: UILabel!

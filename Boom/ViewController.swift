@@ -67,7 +67,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     func unTouched(indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! MainCollectionViewCell
-        cell.image_bar.backgroundColor = UIColor.systemGray4
+        cell.image_bar.backgroundColor = UIColor.black
+        cell.image_bar.alpha = 0.1
     }
     
     func touch(num: IndexPath) {

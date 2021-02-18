@@ -9,7 +9,7 @@ import UIKit
 
 class PageViewController: UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource {
     lazy var VCArray: [UIViewController] = []
-    let VC = UIApplication.topViewController() as! StartViewController
+    let VC = UIApplication.topViewController() as! LoginViewController
 
     var calVC: UIViewController?
     var gameVC: UIViewController?

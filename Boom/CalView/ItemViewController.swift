@@ -14,6 +14,7 @@ class ItemViewController: UIViewController {
     @IBOutlet weak var button_Done: UIButton!
     @IBOutlet weak var money_text: UITextField!
     @IBOutlet weak var name_text: UITextField!
+    @IBOutlet weak var text_easy: UILabel!
     
     @IBOutlet weak var button_people: UIButton!
     @IBOutlet weak var button_charged: UIButton!
@@ -25,13 +26,16 @@ class ItemViewController: UIViewController {
     @IBOutlet weak var arrow_two: UIImageView!
     
     var updateTableView: (() -> Void)?
-        
+    
+    var calVC: UIViewController?
     var calUid: String?
     let ref = Database.database().reference()
     let uid = Auth.auth().currentUser?.uid
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        text_easy.isHidden = true
+        mode_changer.isHidden = true
         
         mode_changer.isOn = false
         easy_stepper.isHidden = true
@@ -42,15 +46,10 @@ class ItemViewController: UIViewController {
                 let values = item.value as! [String: Any]
                 if values["uid"] as? String == self.calUid {
                     self.name_text.placeholder = values["name"] as? String
-                    self.money_text.placeholder = values["totalCost"] as? String ?? "0"
+                    self.money_text.placeholder = "\(values["totalCost"]!)"
                 }
-                
             }
         }
-        
-        
-        
-        
     }
     
     @IBAction func cancel_clicked(_ sender: Any) {
@@ -75,6 +74,7 @@ class ItemViewController: UIViewController {
             button_charged.isEnabled = true
         }
     }
+    
     @IBAction func btn_people_clicked(_ sender: Any) {
         let VC = self.storyboard?.instantiateViewController(identifier: "PeopleViewController") as! PeopleViewController
         VC.modalPresentationStyle = .fullScreen
@@ -83,24 +83,39 @@ class ItemViewController: UIViewController {
     }
     
     @IBAction func done_clicked(_ sender: Any) {
+        let primeChild = ref.child("Users").child(uid!).child("CalItems").child(calUid!)
+        let VC = calVC as! CalculateViewController
+        let text = money_text.text!
+        let intText = Int(text)
                 
-        if Int(money_text.text!) == nil  || Int(money_text.text!)! < 0{
+        if text.isEmpty == true {
+            self.dismiss(animated: true, completion: nil)
+        } else if intText == nil{
             let alert = UIAlertController(title: "오류 발생", message: "총 금액에는 숫자만 입력해주세요", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "확인", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         } else if name_text.text == "" {
-            ref.child("Users").child(uid!).child("CalItems").child(calUid!).child("name").setValue("장소 이름")
-            ref.child("Users").child(uid!).child("CalItems").child(calUid!).child("totalCost").setValue(Int(money_text.text!))
+            primeChild.child("totalCost").setValue(Int(money_text.text!))
+            name_text.text = name_text.placeholder
             updateTableView?()
             self.dismiss(animated: true, completion: nil)
         } else {
-            ref.child("Users").child(uid!).child("CalItems").child(calUid!).child("totalCost").setValue(Int(money_text.text!))
-            ref.child("Users").child(uid!).child("CalItems").child(calUid!).child("name").setValue(name_text.text)
+            primeChild.child("totalCost").setValue(Int(money_text.text!))
+            primeChild.child("name").setValue(name_text.text)
             updateTableView?()
+            VC.updateTotalCost()
             self.dismiss(animated: true, completion: nil)
         }
                 
-    //    ref.child("Users").child(uid!).child("CalItems").child(calUid!).child("totalCost").setValue(money_text.text as! Int)
     }
+    @IBAction func charge_btn_Clicked(_ sender: Any) {
+        let VC = self.storyboard?.instantiateViewController(identifier: "ChargeViewController") as! ChargeViewController
+        VC.modalPresentationStyle = .fullScreen
+        VC.calUid = calUid
+        self.present(VC, animated: true, completion: nil)
+        
+    }
+    
+    
     
 }

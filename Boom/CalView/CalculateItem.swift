@@ -22,4 +22,8 @@ struct people {
         self.name = name
         self.uid = uid
     }
+    
+    var didCharge: Bool = false
+    var usedMoney: Int?
+
 }

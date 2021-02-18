@@ -12,7 +12,8 @@ class CalculateViewController: UIViewController, UITableViewDelegate, UITableVie
     
     var calItems: [CalculateItem] = []
     @IBOutlet weak var tableView: UITableView!
-
+    @IBOutlet weak var totalCost: UILabel!
+    
     
     let ref = Database.database().reference()
     var uid: String?
@@ -38,6 +39,8 @@ class CalculateViewController: UIViewController, UITableViewDelegate, UITableVie
             }
             self.tableView.reloadData()
         })
+        
+        updateTotalCost()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -58,6 +61,7 @@ class CalculateViewController: UIViewController, UITableViewDelegate, UITableVie
             let VC = self.storyboard?.instantiateViewController(identifier: "ItemViewController") as! ItemViewController
             VC.modalPresentationStyle = .fullScreen
             VC.calUid = cellUid
+            VC.calVC = self
             VC.updateTableView = {
                 self.calItems[indexPath.row].name = VC.name_text.text
                 self.calItems[indexPath.row].totalCost = Int(VC.money_text.text!)
@@ -75,8 +79,20 @@ class CalculateViewController: UIViewController, UITableViewDelegate, UITableVie
             self.ref.child("Users").child(self.uid!)
                 .child("CalItems").child(itemUid!).removeValue()
             
+            //peopleList 에서 지우기
+            self.ref.child("Users").child(self.uid!).child("PeopleList").observeSingleEvent(of: DataEventType.value) { (DataSnapshot) in
+                for people in DataSnapshot.children.allObjects as! [DataSnapshot] {
+                    let values = people.value as! [String: Any]
+                    if values[itemUid!] != nil {
+                        self.ref.child("Users").child(self.uid!).child("PeopleList").child(values["uid"] as! String).child(itemUid!).removeValue()
+                    }
+                }
+            }
+            
+            
             //calItems 에서 지우기
             self.calItems.remove(at: indexPath.row)
+            self.updateTotalCost()
             self.tableView.reloadData()
             
         }
@@ -87,7 +103,25 @@ class CalculateViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return CGFloat(100)
     }
-
+    
+    func updateTotalCost() {
+        var tC = 0
+        ref.child("Users").child(self.uid!).child("CalItems").observe(DataEventType.value) { (DataSnapshot) in
+            tC = 0
+            for item in DataSnapshot.children.allObjects as! [DataSnapshot] {
+                let values = item.value as! [String: Any]
+                
+                tC += values["totalCost"] as! Int
+            }
+            self.totalCost.text = "\(tC)"
+        }
+    }
+    @IBAction func final_btn_clicked(_ sender: Any) {
+        let view = self.storyboard?.instantiateViewController(identifier: "FinalViewController") as! FinalViewController
+        view.modalPresentationStyle = .fullScreen
+        self.present(view, animated: true, completion: nil)
+    }
+    
 }
 
 class CalculateViewCell: UITableViewCell {
